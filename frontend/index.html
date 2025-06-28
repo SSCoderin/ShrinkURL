@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShrinkURL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <Header class="flex flex-row items-center bg-white shadow-sm p-6 justify-between align-center">
+        <div>
+            <h1 class="text-3xl font-bold text-blue-800 hover:text-blue-900 transition-colors">ShrinkURL</h1>
+        </div>
+        <div class="flex flex-row gap-4">
+            <a href="/login" class="px-4 py-2 rounded-lg hover:bg-blue-50 text-blue-800 font-medium transition-all">Login</a>
+            <a href="/register" class="px-4 py-2 bg-blue-800 text-white rounded-lg hover:bg-blue-900 transition-colors">Register</a>
+        </div>
+    </Header>
+    <Main class="flex flex-col justify-center items-center  py-20 px-4">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-800 mb-4">Welcome to ShrinkURL</h1>
+            <h2 class="text-xl text-gray-600">Shorten your URLs in just one click</h2>
+        </div>
+        <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-2xl">
+            <div class="space-y-6">
+                <div>
+                    <input type="text" placeholder="Paste your long URL here" class="border-2 border-gray-200 p-4 w-full rounded-lg focus:border-blue-800 focus:outline-none transition-colors">
+                </div>
+                <div class="flex gap-4">
+                    <input type="text" placeholder="Your shortened URL will appear here" class="border-2 border-gray-200 p-4 flex-grow rounded-lg focus:border-blue-800 focus:outline-none transition-colors" readonly>
+                    <button class="bg-blue-800 px-6 py-4 rounded-lg text-white font-medium hover:bg-blue-900 transition-colors flex-shrink-0">Copy</button>
+                </div>
+                <div class="flex gap-4">
+                    <button class="bg-blue-800 p-4 flex-grow rounded-lg text-white font-medium hover:bg-blue-900 transition-colors">Shorten URL / submit custom URL</button>
+                    <button class="bg-gray-100 p-4 rounded-lg text-blue-800 font-medium hover:bg-gray-200 transition-colors flex-shrink-0">Custom URL</button>
+                </div>
+            </div>
+        </div>
+    </Main>
+</body>
+</html>
