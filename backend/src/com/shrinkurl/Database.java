@@ -24,9 +24,9 @@ public class Database {
                     "password VARCHAR(255) NOT NULL" +
                     ")";
             stmt.execute(createTableSQL);
-            logger.info("✅ Users table created or already exists.");
+            logger.info("Users table created or already exists.");
         } catch (SQLException e) {
-            logger.error("❌ Failed to initialize database", e);
+            logger.error(" Failed to initialize database", e);
         }
     }
 }

@@ -19,14 +19,16 @@ public class Server {
     }
 
     public void start() throws IOException {
-        Database.initialize(); 
-        HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
-        server.createContext("/ping", new PingHandler());
-        server.setExecutor(null); // default executor
-        server.start();
+    Database.initialize(); // ✅ Required to create the table
 
-        logger.info("Server started at http://localhost:8080");
-    }
+    HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
+    server.createContext("/ping", new PingHandler());
+    server.setExecutor(null);
+    server.start();
+
+    logger.info("Server started at http://localhost:8080");
+}
+
 
     static class PingHandler implements HttpHandler {
         private static final Logger logger = LoggerFactory.getLogger(PingHandler.class);
