@@ -19,6 +19,7 @@ public class Server {
     }
 
     public void start() throws IOException {
+        Database.initialize(); 
         HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
         server.createContext("/ping", new PingHandler());
         server.setExecutor(null); // default executor
