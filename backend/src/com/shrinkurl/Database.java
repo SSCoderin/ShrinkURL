@@ -24,6 +24,13 @@ public class Database {
                     "password VARCHAR(255) NOT NULL" +
                     ")";
             stmt.execute(createTableSQL);
+            String createUrlsTable = "CREATE TABLE IF NOT EXISTS urls (" +
+    "id INT AUTO_INCREMENT PRIMARY KEY, " +
+    "long_url VARCHAR(2048) NOT NULL, " +
+    "short_code VARCHAR(255) UNIQUE NOT NULL" +
+    ")";
+stmt.execute(createUrlsTable);
+
             logger.info("Users table created or already exists.");
         } catch (SQLException e) {
             logger.error(" Failed to initialize database", e);
