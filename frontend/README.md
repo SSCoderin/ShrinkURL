@@ -1,56 +1,99 @@
-# ShrinkURL
-Run Frontend (surrest to open frontend folder in vscode )
+# ShrinkURL - URL Shortener Service
+
+## Getting Started
+
+### Running Frontend
+(Suggested to open frontend folder in VS Code)
+```
 cd frontend/
 start index.html
+```
 
-----------------------------------------------------------------------
-API Endpoints
+## API Documentation
 
+### Authentication Endpoints
+
+#### Register User
+```
 POST /register
-Registers a new user
+```
+Register a new user account
+- Request Body: 
+```json
+{ 
+    "username": "test", 
+    "password": "pass123" 
+}
+```
 
-Request Body: { "username": "test", "password": "pass123" }
-===================================================================
+#### Login
+```
 POST /login
-Authenticates user and returns dummy token
+```
+Authenticate user and receive access token
+- Request Body:
+```json
+{
+    "username": "test",
+    "password": "pass123"
+}
+```
+- Response:
+```json
+{
+    "token": "test"
+}
+```
 
-Request Body: { "username": "test", "password": "pass123" }
-
-Response: { "token": "test" }
-=====================================================================
+#### Validate Token
+```
 POST /checktoken
-Dummy check if token is valid (token must match username)
+```
+Verify if token is valid (token must match username)
+- Header: `Authorization: Bearer <token>`
 
-Header: Authorization: Bearer <token>
-====================================================================
+### URL Shortening Endpoints
+
+#### Create Short URL
+```
 POST /shorten
-Shortens a URL
+```
+Generate shortened URL
 
-Anonymous: { "longUrl": "https://example.com" }
+For anonymous users:
+```json
+{
+    "longUrl": "https://example.com"
+}
+```
 
-Logged-in (custom): { "longUrl": "https://example.com", "customAlias": "my-alias" }
+For authenticated users (with custom alias):
+```json
+{
+    "longUrl": "https://example.com",
+    "customAlias": "my-alias"
+}
+```
 
-Response: { "shortUrl": "http://localhost:8080/abc123" }
-========================================================================
+- Response:
+```json
+{
+    "shortUrl": "http://localhost:8080/abc123"
+}
+```
+
+#### Access Short URL
+```
 GET /:shortcode
-Redirects to original long URL
+```
+Redirect to original long URL
 
-----------------------------------------------------------------------------------------
+## Features
 
-
-Features :
-
- Anonymous URL shortening
-
- User registration & login
-
- Custom short URLs for logged-in users
-
- Token-based dummy auth
-
- Local H2 database (file-based)
-
- SLF4J logging
-
- Basic redirection support
-
+- ✨ Anonymous URL shortening
+- 🔐 User registration & login
+- 🎯 Custom short URLs for logged-in users
+- 🔑 Token-based authentication
+- 💾 Local H2 database (file-based)
+- 📝 SLF4J logging
+- 🔄 Basic redirection support
