@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 
 public class Database {
     private static final Logger logger = LoggerFactory.getLogger(Database.class);
-    private static final String DB_URL = "jdbc:h2:./shrinkurl_db"; // relative to backend/
+    private static final String DB_URL = "jdbc:h2:./shrinkurl_db"; 
 
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(DB_URL, "sa", "");

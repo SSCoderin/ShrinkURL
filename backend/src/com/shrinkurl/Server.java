@@ -19,10 +19,14 @@ public class Server {
     }
 
     public void start() throws IOException {
-    Database.initialize(); // ✅ Required to create the table
+    Database.initialize(); 
 
     HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
     server.createContext("/ping", new PingHandler());
+    server.createContext("/register", new RegisterHandler());
+    server.createContext("/login", new LoginHandler());
+
+
     server.setExecutor(null);
     server.start();
 

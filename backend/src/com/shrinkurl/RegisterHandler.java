@@ -22,7 +22,7 @@ public class RegisterHandler implements HttpHandler {
     exchange.getResponseHeaders().add("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
         if (!exchange.getRequestMethod().equalsIgnoreCase("POST")) {
-            exchange.sendResponseHeaders(405, -1); // Method Not Allowed
+            exchange.sendResponseHeaders(405, -1); 
             return;
         }
 
@@ -43,7 +43,7 @@ public class RegisterHandler implements HttpHandler {
         try (Connection conn = Database.getConnection()) {
             PreparedStatement stmt = conn.prepareStatement("INSERT INTO users (username, password) VALUES (?, ?)");
             stmt.setString(1, username);
-            stmt.setString(2, password); // Hash in production
+            stmt.setString(2, password); 
             stmt.executeUpdate();
 
             response = "{\"message\":\"Registration successful\"}";
@@ -51,7 +51,7 @@ public class RegisterHandler implements HttpHandler {
         } catch (SQLException e) {
             logger.error("Registration failed for user '{}': {}", username, e.getMessage());
             response = "{\"message\":\"Username already exists\"}";
-            exchange.sendResponseHeaders(409, response.length()); // Conflict
+            exchange.sendResponseHeaders(409, response.length()); 
         }
 
         try (OutputStream os = exchange.getResponseBody()) {
