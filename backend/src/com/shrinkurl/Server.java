@@ -11,6 +11,7 @@ import java.io.OutputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
 public class Server {
     private static final Logger logger = LoggerFactory.getLogger(Server.class);
 
@@ -25,6 +26,11 @@ public class Server {
     server.createContext("/ping", new PingHandler());
     server.createContext("/register", new RegisterHandler());
     server.createContext("/login", new LoginHandler());
+    server.createContext("/checktoken", new CheckTokenHandler());
+    server.createContext("/shorten", new ShortenHandler());
+    server.createContext("/", new UrlRedirectHandler());
+
+
 
 
     server.setExecutor(null);

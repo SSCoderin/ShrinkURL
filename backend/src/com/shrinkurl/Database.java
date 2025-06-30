@@ -13,7 +13,7 @@ public class Database {
     private static final String DB_URL = "jdbc:h2:./shrinkurl_db"; 
 
     public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(DB_URL, "sa", "");
+        return DriverManager.getConnection(DB_URL, "shiv", "123");
     }
 
     public static void initialize() {
@@ -34,6 +34,6 @@ stmt.execute(createUrlsTable);
             logger.info("Users table created or already exists.");
         } catch (SQLException e) {
             logger.error(" Failed to initialize database", e);
-        }
+        }   
     }
 }
